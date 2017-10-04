@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: MainViewModel
+    val sensor = SensorController(lifecycle)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-       viewModel.info.observe(this, Observer { txtInfo.text = it })
+
+
+        viewModel.info.observe(this, Observer { txtInfo.text = it })
 
         btn.setOnClickListener{
             viewModel.changeInfo("Hola")
