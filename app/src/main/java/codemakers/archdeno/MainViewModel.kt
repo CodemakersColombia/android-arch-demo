@@ -1,5 +1,6 @@
 package codemakers.archdeno
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 
 /**
@@ -8,5 +9,9 @@ import android.arch.lifecycle.ViewModel
 
 class MainViewModel: ViewModel(){
 
-    var info = "Hello World"
+    var info: MutableLiveData<String> = MutableLiveData()
+
+    fun changeInfo(text: String){
+        info.value = text
+    }
 }

@@ -1,5 +1,6 @@
 package codemakers.archdeno
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,10 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        txtInfo.text = viewModel.info
+       viewModel.info.observe(this, Observer { txtInfo.text = it })
 
         btn.setOnClickListener{
-            viewModel.info = "Hola"
-            txtInfo.text = viewModel.info}
+            viewModel.changeInfo("Hola")
+        }
     }
 }
